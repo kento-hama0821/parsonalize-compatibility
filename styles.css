@@ -1,23 +1,23 @@
 /* ルート変数の定義 - サイト全体で使用する色やフォントを管理 */
 :root{
-    --c-primary: #FF6B6B; /* メインカラー（暖色系レッド） */
-    --c-primary-light: #FF9B9B; /* メインカラーの明るいバージョン */
-    --c-primary-dark: #E65A5A; /* メインカラーの暗いバージョン */
-    --c-secondary: #4ECDC4; /* アクセントカラー（ターコイズブルー） */
-    --c-secondary-light: #7ED9D4; /* アクセントカラーの明るいバージョン */
-    --c-secondary-dark: #3DA19B; /* アクセントカラーの暗いバージョン */
-    --c-accent: #FFD25B; /* 強調カラー（イエローオレンジ） */
-    --c-accent-light: #FFE289; /* 強調カラーの明るいバージョン */
-    --c-text: #333333; /* 標準テキスト色（濃いグレー） */
-    --c-text-light: #666666; /* 薄いテキスト色（中間グレー） */
-    --c-white: #ffffff; /* 白 */
-    --c-cream: #FFFBF5; /* 背景色（柔らかいクリーム） */
-    --c-sand: #F5EFEB; /* 背景色（サンド） */
-    --c-sky: #E7F6F8; /* 背景色（スカイブルー） */
-    --c-sunset: #FFF0E6; /* 背景色（サンセット） */
-    --c-coming-soon: #9C59B6; /* Coming Soon カードのメインカラー */
-    --c-coming-soon-light: #B47EDD; /* Coming Soon カードの明るいバージョン */
-    --f-main: 'M PLUS Rounded 1c', sans-serif; /* メインフォント */
+    --c-primary: #FF8A65; /* より明るいオレンジ */
+    --c-primary-light: #FFD54F; /* 明るいイエロー */
+    --c-primary-dark: #F4511E; /* 濃いオレンジ */
+    --c-secondary: #A1887F; /* アースカラーのアクセント */
+    --c-secondary-light: #D7CCC8; /* 明るいアースカラー */
+    --c-secondary-dark: #6D4C41; /* 濃いアースカラー */
+    --c-accent: #9CCC65; /* 明るいグリーン */
+    --c-accent-light: #DCEDC8; /* 淡いグリーン */
+    --c-text: #424242; /* より濃いグレー */
+    --c-text-light: #757575; /* 中間グレー */
+    --c-white: #ffffff;
+    --c-cream: #FFFDE7; /* 温かみのあるクリーム */
+    --c-sand: #FBE9E7; /* 優しいピンクベージュ */
+    --c-sky: #E1F5FE; /* 明るいスカイブルー */
+    --c-sunset: #FFF3E0; /* 淡いオレンジ */
+    --c-coming-soon: #AB47BC; /* 鮮やかな紫 */
+    --c-coming-soon-light: #E1BEE7; /* 淡い紫 */
+    --f-main: 'M PLUS Rounded 1c', sans-serif;
 }
 
 /* 基本リセットとボックスモデルの設定 */
@@ -36,40 +36,30 @@ html, body{
 }
 
 body{
-    background: var(--c-cream);
+    background: linear-gradient(135deg, var(--c-cream) 0%, var(--c-sand) 50%, var(--c-sky) 100%);
+    /* より華やかなグラデーション背景 */
+    animation: gradientAnimation 10s ease infinite; /* アニメーションを追加 */
     display: flex;
     flex-direction: column;
     position: relative;
     overflow-x: hidden;
 }
 
-/* 背景のパターン設定 - 旅行モチーフのSVGパターン (相性診断用に変更または削除) */
-/* 今回は一旦コメントアウトし、シンプルにします。必要であれば変更してください。 */
-/*
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,..."); // SVGパターンを相性診断用に変更
-    opacity: 0.6;
-    pointer-events: none;
-    z-index: -1;
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
-*/
 
 /* ヘッダースタイル */
 .site-header{
-    background-color: var(--c-white);
+    background: rgba(255, 255, 255, 0.8); /* 半透明の白背景 */
     text-align: center;
     padding: 1.5rem 1rem;
     margin-bottom: 0;
     position: relative;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     z-index: 10;
-    background: linear-gradient(to bottom, var(--c-white), var(--c-cream));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,7 +82,7 @@ body::before {
 .site-title .line1{
     display: block;
     font-size: clamp(1.8rem, 5vw, 2.6rem); /* レスポンシブフォントサイズ */
-    background: linear-gradient(90deg, var(--c-primary), var(--c-secondary));
+    background: linear-gradient(90deg, var(--c-primary), var(--c-accent)); /* より明るいグラデーション */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -124,9 +114,8 @@ body::before {
 }
 
 .main-nav a:hover {
-    background: rgba(var(--c-primary), 0.1); /* RGBAはJSの変数で直接指定できないので注意 */
-    background: rgba(255, 107, 107, 0.1); /* 直接の色で指定 */
-    color: var(--c-primary);
+    background: rgba(var(--c-primary-light), 0.3); /* より明るいホバー */
+    color: var(--c-primary-dark);
 }
 
 /* ヒーローセクション */
@@ -137,21 +126,20 @@ body::before {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 3rem 1rem;
-    background-color: var(--c-sunset);
-    /* background-image: url("data:image/svg+xml,..."); // 背景パターンは削除 */
+    padding: 5rem 1rem; /* 少し余白を増やす */
+    background: none; /* 背景を透明に */
 }
 
 /* MBTIバッジ（相性診断用に名称変更） */
 .mbti-badge {
-    background: var(--c-secondary);
+    background: var(--c-accent);
     color: var(--c-white);
     padding: 0.5rem 1.5rem;
     border-radius: 25px;
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    box-shadow: 0 4px 10px rgba(78, 205, 196, 0.3);
+    box-shadow: 0 4px 10px rgba(156, 204, 101, 0.4); /* 緑色の影 */
 }
 
 /* キャッチコピー */
@@ -169,7 +157,7 @@ body::before {
 }
 
 .catch span {
-    color: var(--c-primary); /* 強調部分の色 */
+    color: var(--c-primary-dark); /* より濃いオレンジで強調 */
 }
 
 /* ヒーロー説明文 */
@@ -194,12 +182,12 @@ body::before {
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3); /* 色を調整 */
+    box-shadow: 0 6px 12px rgba(255, 138, 101, 0.5); /* オレンジの影 */
 }
 
 .btn-primary:hover{
     transform: translateY(-2px); /* ホバー時に少し上へ */
-    box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4); /* 色を調整 */
+    box-shadow: 0 8px 18px rgba(255, 138, 101, 0.6);
 }
 
 .btn-primary:active{
@@ -231,7 +219,7 @@ body::before {
     display: block;
     width: 70px;
     height: 4px;
-    background: linear-gradient(to right, var(--c-primary), var(--c-secondary));
+    background: linear-gradient(to right, var(--c-primary-light), var(--c-accent-light)); /* 明るいグラデーション */
     margin: 0.8rem auto 0;
     border-radius: 2px;
 }
@@ -247,66 +235,140 @@ body::before {
 
 /* --- 相性診断フォームセクション --- */
 .compatibility-form-section {
-    padding: 4rem 1rem;
-    background-color: var(--c-cream); /* 既存のbackground-colorを流用 */
+    padding: 5rem 1rem;
+    background: none; /* 背景を透明に */
 }
 
 .form-container {
-    max-width: 600px;
+    max-width: 800px; /* 幅を広げてカードを並べやすくする */
     margin: 0 auto 3rem;
-    background: var(--c-white);
+    background: rgba(255, 255, 255, 0.9); /* 半透明の白 */
     padding: 2.5rem;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem; /* input-group間の余白を広げる */
 }
 
 .input-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.8rem; /* ラベルと選択肢の間の余白 */
 }
 
 .input-group label {
     font-weight: 600;
     color: var(--c-text-light);
-    font-size: 1rem;
+    font-size: 1.1rem; /* ラベルのフォントサイズを少し大きく */
+    margin-bottom: 0.5rem;
 }
 
-.mbti-select {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border: 1px solid #ddd;
+/* --- MBTIタイプ選択カスタムUIのスタイル --- */
+.mbti-type-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* 複数のカラムで表示 */
+    gap: 15px; /* カード間の余白 */
+    max-height: 400px; /* 最大高さを設定してスクロール可能にする */
+    overflow-y: auto; /* 縦スクロールを有効にする */
+    padding-right: 10px; /* スクロールバーの幅を考慮 */
+    border: 1px solid #ddd; /* 選択エリアの枠線 */
     border-radius: 8px;
-    font-size: 1rem;
-    color: var(--c-text);
+    padding: 15px; /* 内側の余白 */
     background-color: #fcfcfc;
-    appearance: none; /* デフォルトのスタイルを削除 */
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292%22%20height%3D%22292%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M280.375%2069.625l-123.75%20123.75-123.75-123.75c-9.75-9.75-25.5-9.75-35.25%200s-9.75%2025.5%200%2035.25l141.5%20141.5c9.75%209.75%2025.5%209.75%2035.25%200l141.5-141.5c9.75-9.75%209.75-25.5%200-35.25s-25.5-9.75-35.25%200z%22%2F%3E%3C%2Fsvg%3E'); /* カスタム矢印アイコン */
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    background-size: 0.8em;
-    transition: border-color 0.3s ease;
 }
 
-.mbti-select:focus {
-    border-color: var(--c-primary);
-    outline: none;
+/* カスタムスクロールバーのスタイル */
+.mbti-type-selection::-webkit-scrollbar {
+    width: 8px; /* スクロールバーの幅 */
+}
+
+.mbti-type-selection::-webkit-scrollbar-track {
+    background: #f1f1f1; /* トラックの色 */
+    border-radius: 10px;
+}
+
+.mbti-type-selection::-webkit-scrollbar-thumb {
+    background: var(--c-primary-light); /* サムの色 */
+    border-radius: 10px;
+}
+
+.mbti-type-selection::-webkit-scrollbar-thumb:hover {
+    background: var(--c-primary-dark); /* ホバー時の色 */
+}
+
+
+.mbti-type-card {
+    background-color: var(--c-white);
+    border: 2px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.mbti-type-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--c-primary-light);
+}
+
+.mbti-type-card.selected {
+    border-color: var(--c-primary-dark);
+    background: linear-gradient(45deg, var(--c-primary-light), var(--c-primary));
+    color: var(--c-white);
+    box-shadow: 0 8px 20px rgba(255, 138, 101, 0.4);
+    transform: translateY(-2px);
+}
+
+.mbti-type-code {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--c-primary-dark); /* デフォルト色 */
+    margin-bottom: 5px;
+}
+
+.mbti-type-card.selected .mbti-type-code {
+    color: var(--c-white); /* 選択時 */
+}
+
+.mbti-type-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--c-text); /* デフォルト色 */
+    margin-bottom: 8px;
+}
+
+.mbti-type-card.selected .mbti-type-name {
+    color: var(--c-white); /* 選択時 */
+}
+
+.mbti-type-short-desc {
+    font-size: 0.85rem;
+    color: var(--c-text-light); /* デフォルト色 */
+    line-height: 1.4;
+}
+
+.mbti-type-card.selected .mbti-type-short-desc {
+    color: rgba(255, 255, 255, 0.9); /* 選択時 */
 }
 
 /* 相性診断結果表示エリア */
 .compatibility-result {
     margin-top: 3rem;
-    background: var(--c-white);
-    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.9); /* 半透明の白 */
+    padding: 3rem; /* 少し余白を増やす */
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    border-top: 5px solid var(--c-primary);
+    border-top: 5px solid var(--c-accent); /* 緑色のボーダー */
 }
 
 .result-title {
@@ -339,16 +401,16 @@ body::before {
     flex: 1;
     min-width: 280px;
     max-width: 350px;
-    background: var(--c-sand);
+    background: rgba(var(--c-accent-light), 0.5); /* 淡い緑色の背景 */
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 5px 12px rgba(156, 204, 101, 0.2); /* 緑色の影 */
     text-align: left;
 }
 
 .detail-card h4 {
     font-size: 1.2rem;
-    color: var(--c-secondary-dark);
+    color: var(--c-primary);
     margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
@@ -356,7 +418,7 @@ body::before {
 }
 
 .detail-card h4 i {
-    color: var(--c-secondary);
+    color: var(--c-accent-dark); /* 濃い緑色 */
 }
 
 .detail-card p {
@@ -367,11 +429,71 @@ body::before {
     text-align: left; /* テキストアラインメントを左に設定 */
 }
 
+/* 新しい相性評価要素 */
+.compatibility-rating {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--c-primary);
+    margin-bottom: 1rem;
+}
+
+.compatibility-rating span {
+    color: var(--c-accent);
+    font-weight: bold;
+}
+
+.star {
+    color: gold;
+    margin: 0 0.2rem;
+}
+
+/* 六角形パラメータ表示のコンテナ */
+.parameter-chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    position: relative; /* Canvasの配置基準 */
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+    max-width: 200px;          /* ← ここで上限をしっかり決める          */
+}
+
+@media (max-width: 600px){
+    .parameter-chart-container{ max-width: 200px; }
+}
+
+#parameter-chart {
+    width: 100%;
+    height: auto; /* JavaScriptで高さを調整 */
+    display: block;            /* (inline の隙間をなくす)               */
+}
+
+.parameter-labels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* ラベルがクリックイベントを妨げないように */
+}
+
+.parameter-label {
+    position: absolute;
+    font-size: 0.85rem; /* フォントサイズを少し大きく */
+    color: var(--c-text-light);
+    text-align: center;
+    white-space: nowrap; /* テキストの折り返しを防ぐ */
+    font-weight: 500;
+    /* JavaScriptで位置を調整 */
+}
 
 /* サービス概要セクション (既存スタイルを流用) */
 .about-section {
-    padding: 4rem 1rem;
-    background-color: var(--c-white);
+    padding: 5rem 1rem;
+    background: none; /* 背景を透明に */
     position: relative;
 }
 
@@ -398,7 +520,7 @@ body::before {
 .about-text h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--c-primary);
+    color: var(--c-accent-dark); /* 濃い緑色 */
 }
 
 .about-text p {
@@ -410,7 +532,7 @@ body::before {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* MBTI例の強調ボックス */
@@ -421,13 +543,10 @@ body::before {
     margin-top: 1.5rem;
 }
 
-/* MBTIタイプ紹介セクションは削除のためスタイルも削除 */
-/* スライダーセクションは削除のためスタイルも削除 */
-
 /* 利用方法セクション */
 .how-it-works-section {
-    padding: 4rem 1rem;
-    background-color: var(--c-sand);
+    padding: 5rem 1rem;
+    background: none; /* 背景を透明に */
 }
 
 .steps-container {
@@ -458,7 +577,7 @@ body::before {
     left: -15px;
     width: 40px;
     height: 40px;
-    background: var(--c-primary);
+    background: var(--c-accent);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -466,14 +585,14 @@ body::before {
     justify-content: center;
     font-weight: bold;
     font-size: 1.2rem;
-    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 4px 10px rgba(156, 204, 101, 0.4); /* 緑色の影 */
 }
 
 /* ステップアイコン */
 .step-icon {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, var(--c-secondary-light), var(--c-secondary));
+    background: linear-gradient(135deg, var(--c-primary-light), var(--c-primary));
     color: white;
     border-radius: 50%;
     display: flex;
@@ -481,12 +600,13 @@ body::before {
     justify-content: center;
     font-size: 1.8rem;
     margin: 0 auto 1.5rem;
+    box-shadow: 0 6px 12px rgba(255, 138, 101, 0.4); /* オレンジの影 */
 }
 
 /* 特徴セクション */
 .features-section {
-    background-color: var(--c-sand);
-    padding: 4rem 0;
+    background: none; /* 背景を透明に */
+    padding: 5rem 0;
     position: relative;
 }
 
@@ -508,13 +628,13 @@ body::before {
     flex: 1;
     min-width: 280px;
     max-width: 350px;
-    background-color: var(--c-white);
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明の白 */
     border-radius: 16px;
     padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .feature-card:hover {
@@ -529,11 +649,12 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--c-primary-light), var(--c-primary));
+    background: linear-gradient(135deg, var(--c-accent-light), var(--c-accent)); /* 明るい緑のグラデーション */
     border-radius: 50%;
     margin-bottom: 20px;
     color: white;
     font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(156, 204, 101, 0.3); /* 緑色の影 */
 }
 
 /* 無料バッジ */
@@ -541,23 +662,23 @@ body::before {
     position: absolute;
     top: -12px;
     right: -10px;
-    background: var(--c-accent);
-    color: var(--c-text);
+    background: var(--c-primary);
+    color: var(--c-white);
     font-size: 0.8rem;
     font-weight: 700;
     padding: 5px 12px;
     border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(255, 210, 91, 0.4); /* 色を調整 */
+    box-shadow: 0 4px 8px rgba(255, 138, 101, 0.4); /* オレンジの影 */
     z-index: 2;
 }
 
 /* 準備中カード */
 .coming-soon-card {
-    background: linear-gradient(to bottom right, var(--c-coming-soon), var(--c-coming-soon-light));
+    background: linear-gradient(to bottom right, var(--c-coming-soon-light), var(--c-coming-soon)); /* 紫のグラデーション */
     color: white;
     transform: scale(1.05);
     z-index: 0;
-    box-shadow: 0 15px 35px rgba(156, 89, 182, 0.2);
+    box-shadow: 0 15px 35px rgba(171, 71, 188, 0.3); /* 紫の影 */
     border: none;
     position: relative;
     overflow: hidden;
@@ -565,8 +686,8 @@ body::before {
 
 /* 利用者の声セクション */
 .testimonials-section {
-    padding: 4rem 1rem;
-    background-color: var(--c-white);
+    padding: 5rem 1rem;
+    background: none; /* 背景を透明に */
 }
 
 .testimonials {
@@ -582,10 +703,10 @@ body::before {
     flex: 1;
     min-width: 280px;
     max-width: 380px;
-    background: var(--c-cream);
+    background: rgba(var(--c-cream), 0.8); /* 半透明のクリーム色 */
     padding: 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
 }
@@ -606,7 +727,7 @@ body::before {
 
 .testimonial-name {
     font-weight: bold;
-    color: var(--c-text);
+    color: var(--c-accent-dark); /* 濃い緑色 */
 }
 
 .testimonial-type {
@@ -616,20 +737,23 @@ body::before {
 
 /* よくある質問セクション */
 .faq-section {
-    padding: 4rem 1rem;
-    background-color: var(--c-sky);
+    padding: 5rem 1rem;
+    background: none; /* 背景を透明に */
 }
 
 .faq-container {
     max-width: 800px;
     margin: 0 auto;
+    background: rgba(var(--c-sky), 0.5); /* 半透明のスカイブルー */
+    padding: 2rem;
+    border-radius: 10px;
 }
 
 .faq-item {
-    background: var(--c-white);
+    background: rgba(255, 255, 255, 0.8); /* 半透明の白 */
     border-radius: 10px;
     margin-bottom: 1rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     overflow: hidden;
 }
 
@@ -662,8 +786,8 @@ body::before {
 
 /* CTAセクション */
 .cta-section {
-    background-color: var(--c-sunset);
-    padding: 4rem 0;
+    background: none; /* 背景を透明に */
+    padding: 5rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -693,12 +817,12 @@ body::before {
 }
 
 .cta-benefit i {
-    color: var(--c-primary);
+    color: var(--c-accent); /* 緑色 */
 }
 
 /* フッター */
 .footer {
-    background: var(--c-primary);
+    background: linear-gradient(to right, var(--c-primary-dark), var(--c-secondary-dark)); /* 深みのあるグラデーション */
     color: var(--c-white);
     padding: 3rem 0 0;
     position: relative;
@@ -730,7 +854,7 @@ body::before {
     display: block;
     width: 40px;
     height: 3px;
-    background: var(--c-white);
+    background: var(--c-accent-light); /* 淡い緑色 */
     opacity: 0.5;
     margin-top: 0.5rem;
 }
@@ -749,7 +873,7 @@ body::before {
 .social-icon {
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
     color: var(--c-white);
     border-radius: 50%;
     display: flex;
@@ -760,7 +884,7 @@ body::before {
 }
 
 .social-icon:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.3);
     transform: translateY(-3px);
 }
 
@@ -785,7 +909,7 @@ body::before {
 }
 
 .footer-bottom {
-    background: var(--c-primary-dark);
+    background: rgba(0, 0, 0, 0.1);
     padding: 1.5rem 1rem;
     text-align: center;
 }
@@ -807,7 +931,7 @@ body::before {
 .fly-animation { /* クラス名はそのままで中身を変更 */
     animation: heartbeat 1.5s infinite ease-in-out;
     display: inline-block;
-    color: var(--c-primary); /* ハートの色 */
+    color: var(--c-accent); /* 明るい緑色 */
 }
 
 /* アニメーション（既存を流用） */
@@ -875,6 +999,51 @@ body::before {
         padding: 0.3rem 0.6rem;
     }
 
-    /* 旅行アイコンは削除されたため、関連スタイルも削除 */
-    /* .travel-icons, .travel-icon-item, .travel-icon, .travel-icon-text は削除 */
+    /* カスタム選択UIのモバイル調整 */
+    .mbti-type-selection {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* モバイルでは2列に */
+        max-height: 300px; /* モバイルでの高さ調整 */
+    }
+
+    .mbti-type-card {
+        padding: 10px;
+    }
+
+    .mbti-type-code {
+        font-size: 1.3rem;
+    }
+
+    .mbti-type-name {
+        font-size: 0.9rem;
+    }
+
+    .mbti-type-short-desc {
+        font-size: 0.75rem;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+}
+/* Canvas をインライン要素ではなくブロック要素化 */
+#parameter-chart{
+    display:block;
+}
+
+/* ========== Radar-chart layout ================================= */
+.parameter-chart-container{
+    position: relative;
+    width: 100%;
+    max-width: 240px;          /* ← ここで横幅の上限を決定             */
+    margin: 2rem auto;
+}
+
+@media (max-width: 600px){     /* スマホはさらに小さく                  */
+    .parameter-chart-container{ max-width: 200px; }
+}
+
+#parameter-chart{
+    display: block;            /* inline 隙間を排除                      */
+    width: 100%;               /* CSS サイズは必ずコンテナにフィット      */
+    height: auto;              /* 高さは JS でピクセル座標を設定          */
 }

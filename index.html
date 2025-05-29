@@ -10,20 +10,24 @@
     <meta property="og:title" content="パーソナライズ相性診断 | 2人の性格タイプから見る関係性">
     <meta property="og:description" content="2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-new-domain.com/"> <meta property="og:image" content="https://your-new-domain.com/images/ogp-image-compatibility.jpg"> <meta property="og:site_name" content="Parsonalize 相性診断">
+    <meta property="og:url" content="https://your-new-domain.com/">
+    <meta property="og:image" content="https://your-new-domain.com/images/ogp-image-compatibility.jpg">
+    <meta property="og:site_name" content="Parsonalize 相性診断">
     <meta property="og:locale" content="ja_JP">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="パーソナライズ相性診断 | 2人の性格タイプから見る関係性">
     <meta name="twitter:description" content="2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。">
-    <meta name="twitter:image" content="https://your-new-domain.com/images/ogp-image-compatibility.jpg"> <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Parsonalize 相性診断",
-        "url": "https://your-new-domain.com/", "description": "2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。"
-    }
-</script>
+    <meta name="twitter:image" content="https://your-new-domain.com/images/ogp-image-compatibility.jpg">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Parsonalize 相性診断",
+            "url": "https://your-new-domain.com/",
+            "description": "2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。"
+        }
+    </script>
 
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
@@ -33,7 +37,8 @@
 
     <link rel="stylesheet" href="styles.css">
 
-    <link rel="canonical" href="https://your-new-domain.com/"> <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://your-new-domain.com/">
+    <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
 </head>
 <body>
@@ -63,53 +68,24 @@
         <h2 class="section-title">2人のタイプを選択してください</h2>
         <div class="form-container">
             <div class="input-group">
-                <label for="person1-type">診断する人1のタイプ:</label>
-                <select id="person1-type" class="mbti-select">
-                    <option value="">選択してください</option>
-                    <option value="ISTJ">ISTJ（管理者）</option>
-                    <option value="ISFJ">ISFJ（擁護者）</option>
-                    <option value="INFJ">INFJ（提唱者）</option>
-                    <option value="INTJ">INTJ（建築家）</option>
-                    <option value="ISTP">ISTP（巨匠）</option>
-                    <option value="ISFP">ISFP（冒険家）</option>
-                    <option value="INFP">INFP（仲介者）</option>
-                    <option value="INTP">INTP（論理学者）</option>
-                    <option value="ESTP">ESTP（起業家）</option>
-                    <option value="ESFP">ESFP（エンターテイナー）</option>
-                    <option value="ENFP">ENFP（広報運動家）</option>
-                    <option value="ENTP">ENTP（討論者）</option>
-                    <option value="ESTJ">ESTJ（幹部）</option>
-                    <option value="ESFJ">ESFJ（領事）</option>
-                    <option value="ENFJ">ENFJ（主人公）</option>
-                    <option value="ENTJ">ENTJ（指揮官）</option>
-                </select>
+                <label>診断する人1のタイプ:</label>
+                <div id="person1-type-selection" class="mbti-type-selection">
+                </div>
             </div>
             <div class="input-group">
-                <label for="person2-type">診断する人2のタイプ:</label>
-                <select id="person2-type" class="mbti-select">
-                    <option value="">選択してください</option>
-                    <option value="ISTJ">ISTJ（管理者）</option>
-                    <option value="ISFJ">ISFJ（擁護者）</option>
-                    <option value="INFJ">INFJ（提唱者）</option>
-                    <option value="INTJ">INTJ（建築家）</option>
-                    <option value="ISTP">ISTP（巨匠）</option>
-                    <option value="ISFP">ISFP（冒険家）</option>
-                    <option value="INFP">INFP（仲介者）</option>
-                    <option value="INTP">INTP（論理学者）</option>
-                    <option value="ESTP">ESTP（起業家）</option>
-                    <option value="ESFP">ESFP（エンターテイナー）</option>
-                    <option value="ENFP">ENFP（広報運動家）</option>
-                    <option value="ENTP">ENTP（討論者）</option>
-                    <option value="ESTJ">ESTJ（幹部）</option>
-                    <option value="ESFJ">ESFJ（領事）</option>
-                    <option value="ENFJ">ENFJ（主人公）</option>
-                    <option value="ENTJ">ENTJ（指揮官）</option>
-                </select>
+                <label>診断する人2のタイプ:</label>
+                <div id="person2-type-selection" class="mbti-type-selection">
+                </div>
             </div>
             <button class="btn-primary" id="diagnose-button">相性を診断する</button>
         </div>
         <div id="compatibility-result" class="compatibility-result" style="display: none;">
             <h3 class="result-title">診断結果: <span id="result-types"></span></h3>
+            <p class="compatibility-rating">2人の相性は <span id="star-rating"></span></p>
+            <div class="parameter-chart-container">
+                <canvas id="parameter-chart"></canvas>
+                <div class="parameter-labels" id="parameter-labels"></div>
+            </div>
             <p id="result-text"></p>
             <div class="result-details">
                 <div class="detail-card">
@@ -132,7 +108,8 @@
         <h2 class="section-title">サービス概要</h2>
         <div class="section-content">
             <div class="about-image">
-                <img src="/images/compatibility-chart.png" alt="MBTI相性チャートのイメージ" class="about-img"> </div>
+                <img src="/images/compatibility-chart.png" alt="MBTI相性チャートのイメージ" class="about-img">
+            </div>
             <div class="about-text">
                 <h3>Parsonalize 相性診断とは？</h3>
                 <p>このサービスは、16の性格タイプ（MBTI）の理論に基づいて、2人の間の相性を診断します。</p>
@@ -346,7 +323,8 @@
         <div class="footer-section">
             <h3 class="footer-heading">各種ポリシー</h3>
             <ul class="footer-links">
-                <li><a href="/about">当サイトについて</a></li> <li><a href="/privacy">プライバシーポリシー</a></li>
+                <li><a href="/about">当サイトについて</a></li>
+                <li><a href="/privacy">プライバシーポリシー</a></li>
                 <li><a href="/terms">利用規約</a></li>
                 <li><a href="/disclaimer">免責事項</a></li>
                 <li><a href="/contact">お問い合わせ</a></li>
