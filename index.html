@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パーソナライズ相性診断 | 2人の性格タイプから見る関係性</title>
+    <meta name="description" content="2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。">
+    <meta name="keywords" content="MBTI,相性診断,パーソナライズ,性格タイプ,関係性,無料診断,カップル,友達,家族">
+
+    <meta property="og:title" content="パーソナライズ相性診断 | 2人の性格タイプから見る関係性">
+    <meta property="og:description" content="2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-new-domain.com/"> <meta property="og:image" content="https://your-new-domain.com/images/ogp-image-compatibility.jpg"> <meta property="og:site_name" content="Parsonalize 相性診断">
+    <meta property="og:locale" content="ja_JP">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="パーソナライズ相性診断 | 2人の性格タイプから見る関係性">
+    <meta name="twitter:description" content="2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。">
+    <meta name="twitter:image" content="https://your-new-domain.com/images/ogp-image-compatibility.jpg"> <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Parsonalize 相性診断",
+        "url": "https://your-new-domain.com/", "description": "2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。"
+    }
+</script>
+
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="canonical" href="https://your-new-domain.com/"> <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+</head>
+<body>
+<header class="site-header">
+    <h1 class="site-title">
+        <span class="line1">Parsonalize 相性診断 <i class="fas fa-heartbeat fly-animation"></i></span>
+    </h1>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#about">サービス概要</a></li>
+            <li><a href="#how-it-works">利用方法</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero animated">
+        <div class="mbti-badge">相性診断ツール</div>
+        <h2 class="catch"><span>2人の性格タイプ</span>で<br>相性を深めよう</h2>
+        <p class="hero-description">パーソナライズされた性格タイプ（MBTI）を元に、あなたと大切な人の関係性を診断し、<br>より良いコミュニケーションのためのヒントをご提案します。</p>
+        <a href="#compatibility-form-section" class="btn-primary" id="start-diagnosis-btn">相性診断を始める</a>
+        <p class="note">※ 無料で診断 → 結果表示まで最短1分！</p>
+    </section>
+
+    <section id="compatibility-form-section" class="compatibility-form-section animated delay-1">
+        <h2 class="section-title">2人のタイプを選択してください</h2>
+        <div class="form-container">
+            <div class="input-group">
+                <label for="person1-type">診断する人1のタイプ:</label>
+                <select id="person1-type" class="mbti-select">
+                    <option value="">選択してください</option>
+                    <option value="ISTJ">ISTJ（管理者）</option>
+                    <option value="ISFJ">ISFJ（擁護者）</option>
+                    <option value="INFJ">INFJ（提唱者）</option>
+                    <option value="INTJ">INTJ（建築家）</option>
+                    <option value="ISTP">ISTP（巨匠）</option>
+                    <option value="ISFP">ISFP（冒険家）</option>
+                    <option value="INFP">INFP（仲介者）</option>
+                    <option value="INTP">INTP（論理学者）</option>
+                    <option value="ESTP">ESTP（起業家）</option>
+                    <option value="ESFP">ESFP（エンターテイナー）</option>
+                    <option value="ENFP">ENFP（広報運動家）</option>
+                    <option value="ENTP">ENTP（討論者）</option>
+                    <option value="ESTJ">ESTJ（幹部）</option>
+                    <option value="ESFJ">ESFJ（領事）</option>
+                    <option value="ENFJ">ENFJ（主人公）</option>
+                    <option value="ENTJ">ENTJ（指揮官）</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="person2-type">診断する人2のタイプ:</label>
+                <select id="person2-type" class="mbti-select">
+                    <option value="">選択してください</option>
+                    <option value="ISTJ">ISTJ（管理者）</option>
+                    <option value="ISFJ">ISFJ（擁護者）</option>
+                    <option value="INFJ">INFJ（提唱者）</option>
+                    <option value="INTJ">INTJ（建築家）</option>
+                    <option value="ISTP">ISTP（巨匠）</option>
+                    <option value="ISFP">ISFP（冒険家）</option>
+                    <option value="INFP">INFP（仲介者）</option>
+                    <option value="INTP">INTP（論理学者）</option>
+                    <option value="ESTP">ESTP（起業家）</option>
+                    <option value="ESFP">ESFP（エンターテイナー）</option>
+                    <option value="ENFP">ENFP（広報運動家）</option>
+                    <option value="ENTP">ENTP（討論者）</option>
+                    <option value="ESTJ">ESTJ（幹部）</option>
+                    <option value="ESFJ">ESFJ（領事）</option>
+                    <option value="ENFJ">ENFJ（主人公）</option>
+                    <option value="ENTJ">ENTJ（指揮官）</option>
+                </select>
+            </div>
+            <button class="btn-primary" id="diagnose-button">相性を診断する</button>
+        </div>
+        <div id="compatibility-result" class="compatibility-result" style="display: none;">
+            <h3 class="result-title">診断結果: <span id="result-types"></span></h3>
+            <p id="result-text"></p>
+            <div class="result-details">
+                <div class="detail-card">
+                    <h4><i class="fas fa-check-circle"></i> 関係性の強み</h4>
+                    <p id="result-strengths"></p>
+                </div>
+                <div class="detail-card">
+                    <h4><i class="fas fa-exclamation-triangle"></i> 関係性の注意点</h4>
+                    <p id="result-weaknesses"></p>
+                </div>
+                <div class="detail-card">
+                    <h4><i class="fas fa-lightbulb"></i> 関係を深めるヒント</h4>
+                    <p id="result-tips"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section animated delay-2">
+        <h2 class="section-title">サービス概要</h2>
+        <div class="section-content">
+            <div class="about-image">
+                <img src="/images/compatibility-chart.png" alt="MBTI相性チャートのイメージ" class="about-img"> </div>
+            <div class="about-text">
+                <h3>Parsonalize 相性診断とは？</h3>
+                <p>このサービスは、16の性格タイプ（MBTI）の理論に基づいて、2人の間の相性を診断します。</p>
+                <p>各タイプが持つ特性やコミュニケーションスタイルを理解することで、お互いの関係性の強みや、すれ違いやすいポイント、そして関係をより豊かにするための具体的なヒントを得ることができます。</p>
+                <p>友達、恋人、夫婦、家族、職場の同僚など、大切な人との関係を深めるための一助としてご活用ください。</p>
+                <div class="mbti-example">
+                    <p><strong>例：</strong></p>
+                    <p>・ENFP（広報運動家）とISTJ（管理者）→ お互いに刺激を与え合い、実用的な視点と新しいアイデアを結びつけられるが、コミュニケーション方法に工夫が必要。</p>
+                    <p>・INFJ（提唱者）とENFJ（主人公）→ 互いの感情を理解し、共感しやすい理想的な関係性を築ける。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works-section animated delay-3">
+        <h2 class="section-title">利用方法</h2>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-icon"><i class="fas fa-user-check"></i></div>
+                <h3>2人のタイプを選ぶ</h3>
+                <p>診断したいお互いのパーソナライズされた性格タイプ（MBTI）をドロップダウンから選択します。</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-icon"><i class="fas fa-heart-pulse"></i></div>
+                <h3>相性診断を実行</h3>
+                <p>「相性を診断する」ボタンをクリックすると、瞬時に2人の相性結果が表示されます。</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-icon"><i class="fas fa-book-reader"></i></div>
+                <h3>結果から関係性を深める</h3>
+                <p>診断結果には、強み、注意点、関係を深めるヒントが含まれています。これらを参考に、お互いをより深く理解しましょう。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section animated delay-4">
+        <h2 class="section-title">サービスの特徴</h2>
+        <div class="features">
+            <div class="feature-card">
+                <span class="free-badge">FREE</span>
+                <div class="feature-icon">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <h3 class="feature-title">2人のタイプで診断</h3>
+                <p class="feature-desc">自分だけでなく、相手のタイプも入力して、2人の関係性を多角的に診断します。</p>
+            </div>
+            <div class="feature-card">
+                <span class="free-badge">FREE</span>
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">最短1分で結果表示</h3>
+                <p class="feature-desc">複雑な質問は不要。タイプを選ぶだけで、あなただけの相性診断結果がすぐに表示されます。</p>
+            </div>
+            <div class="feature-card">
+                <span class="free-badge">FREE</span>
+                <div class="feature-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="feature-title">関係性深化のヒント</h3>
+                <p class="feature-desc">相性の強みや注意点、さらに良好な関係を築くための具体的なアドバイスを提供します。</p>
+            </div>
+        </div>
+        <div class="features second-row">
+            <div class="feature-card">
+                <span class="free-badge">FREE</span>
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">プライバシー配慮</h3>
+                <p class="feature-desc">入力された性格タイプは、診断以外の目的で使用されることはありません。安心してご利用ください。</p>
+            </div>
+            <div class="feature-card coming-soon-card">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3 class="feature-title">コミュニティ機能</h3>
+                <p class="feature-desc">もうすぐ登場！同じタイプの関係性を持つユーザー同士で情報交換ができるコミュニティを開発中です。</p>
+            </div>
+            <div class="feature-card coming-soon-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">詳細分析オプション</h3>
+                <p class="feature-desc">もうすぐ登場！さらに深い相性分析や、特定の状況に合わせたアドバイスを提供予定です。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section animated delay-5">
+        <h2 class="section-title">利用者の声</h2>
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                    <img src="/images/opi1.jpg" alt="利用者の写真">
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-text">「INFPの私とISTJの彼氏の相性を診断しました。お互いの考え方の違いが明確になり、コミュニケーションのヒントを得られて、関係がさらに良くなりました！」</p>
+                    <p class="testimonial-name">S.Mさん</p>
+                    <p class="testimonial-type">INFP (仲介者タイプ)</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                    <img src="/images/opi3.jpg" alt="利用者の写真">
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-text">「職場の同僚（ENTJ）との相性を調べました。彼の決断力の速さと私の分析力がどう作用するのか分かり、チームでの役割分担に役立てられました。」</p>
+                    <p class="testimonial-name">K.Yさん</p>
+                    <p class="testimonial-type">INTJ (建築家タイプ)</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                    <img src="/images/opi2.jpg" alt="利用者の写真">
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-text">「ISFPの親友との相性を見ました。お互いの価値観が一致している部分と、違うからこそ面白い部分が可視化され、これからも楽しい関係を築けそうです。」</p>
+                    <p class="testimonial-name">M.Kさん</p>
+                    <p class="testimonial-type">ISFP (冒険家タイプ)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section animated delay-6">
+        <h2 class="section-title">よくある質問</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>パーソナライズされた性格タイプ診断とは何ですか？</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>当サイトでは、MBTIの16性格タイプ理論を用いて、個人の特性を理解し、その組み合わせから2人の間の相性を診断します。これは自己理解や他者理解を深めるためのツールです。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>このサービスの利用料金はいくらですか？</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>基本的な相性診断は無料でご利用いただけます。将来的に、より詳細な分析やプレミアム機能を追加する可能性はありますが、現在のサービスはすべて無料です。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>自分の性格タイプがわからない場合はどうすればいいですか？</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>「パーソナライズされた性格タイプ診断」は、ご自身でタイプを把握していることを前提としています。もしタイプが不明な場合は、まず信頼できるMBTI診断サイトなどでご自身のタイプを確認することをお勧めします。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>診断結果は常に正確ですか？</h3>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>MBTIの相性論は学術的に確立されたものではなく、あくまで傾向やヒントを提供するものです。診断結果は、関係性をより良くするための「参考情報」としてご活用ください。最も大切なのは、お互いを尊重し、理解しようと努めることです。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section animated delay-7">
+        <h2 class="catch">さあ、あなたと大切な人の<br><span>関係性を深めよう</span></h2>
+        <p class="cta-description">性格タイプを理解することで、お互いの強みや違いを知り、より良い関係を築くヒントを見つけましょう。</p>
+        <a href="#compatibility-form-section" class="btn-primary" id="start-diagnosis-btn-bottom">今すぐ相性診断を受ける</a>
+        <div class="cta-benefits">
+            <div class="cta-benefit">
+                <i class="fas fa-check-circle"></i>
+                <span>無料で診断可能</span>
+            </div>
+            <div class="cta-benefit">
+                <i class="fas fa-check-circle"></i>
+                <span>最短1分で結果表示</span>
+            </div>
+            <div class="cta-benefit">
+                <i class="fas fa-check-circle"></i>
+                <span>登録不要で利用可能</span>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3 class="footer-heading">Parsonalize 相性診断</h3>
+            <p class="footer-description">2人のパーソナライズされた性格タイプから、相性や関係性を深めるヒントを提案するサービスです。</p>
+            <div class="footer-social">
+                <a href="#" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3 class="footer-heading">コンテンツ</h3>
+            <ul class="footer-links">
+                <li><a href="#about">サービス概要</a></li>
+                <li><a href="#how-it-works">利用方法</a></li>
+                <li><a href="#faq">よくある質問</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3 class="footer-heading">各種ポリシー</h3>
+            <ul class="footer-links">
+                <li><a href="/about">当サイトについて</a></li> <li><a href="/privacy">プライバシーポリシー</a></li>
+                <li><a href="/terms">利用規約</a></li>
+                <li><a href="/disclaimer">免責事項</a></li>
+                <li><a href="/contact">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Parsonalize Compatibility All Rights Reserved.</p>
+        <p class="footer-disclaimer">※本サービスは一般的な性格タイプに基づく関係性のヒントを提供するものであり、心理学的な診断や専門的なアドバイスではありません。診断結果はあくまで参考情報としてご活用ください。</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
