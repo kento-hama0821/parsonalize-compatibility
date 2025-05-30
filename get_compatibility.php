@@ -1,54 +1,44 @@
 <?php
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *'); // 開発中は全てのオリジンからのアクセスを許可。本番環境では特定のオリジンに限定することを推奨。
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: *');
 
-// MBTIタイプの辞書順ソートキーを生成する関数
-function getSortedTypeKey($type1, $type2) {
-    $types = [$type1, $type2];
-    sort($types); // 辞書順にソート
-    return implode('-', $types);
+
+function getSortedTypeKey(string $t1, string $t2): string {
+    $arr = [$t1, $t2];
+    sort($arr, SORT_STRING);
+    return implode('-', $arr);
 }
 
-// リクエストからタイプを取得
-$person1Type = isset($_GET['type1']) ? $_GET['type1'] : '';
-$person2Type = isset($_GET['type2']) ? $_GET['type2'] : '';
+$type1 = $_GET['type1'] ?? '';
+$type2 = $_GET['type2'] ?? '';
 
-$response = []; // レスポンスデータ
+if ($type1 === '' || $type2 === '') {
+    http_response_code(400);
+    echo json_encode(['error' => '両方のタイプを指定してください。']);
+    exit;
+}
 
-if (empty($person1Type) || empty($person2Type)) {
-    $response = [
-        'error' => '両方のタイプを選択してください。'
-    ];
+$jsonFile = __DIR__ . '/compatibility_data.json';
+if (!file_exists($jsonFile)) {
+    http_response_code(500);
+    echo json_encode(['error' => 'compatibility_data.json が見つかりません。']);
+    exit;
+}
+
+$json = file_get_contents($jsonFile);
+$data = json_decode($json, true);
+if (json_last_error() !== JSON_ERROR_NONE) {
+    http_response_code(500);
+    echo json_encode(['error' => 'JSON のパースに失敗しました。']);
+    exit;
+}
+
+$key = getSortedTypeKey($type1, $type2);
+if (isset($data[$key])) {
+    echo json_encode($data[$key], JSON_UNESCAPED_UNICODE);
 } else {
-    // JSONファイルから相性データを読み込む
-    $jsonFilePath = 'compatibility_data.json'; // JSONファイルのパスを適切に設定
-    if (!file_exists($jsonFilePath)) {
-        $response = [
-            'error' => '相性データファイルが見つかりません。'
-        ];
-    } else {
-        $jsonData = file_get_contents($jsonFilePath);
-        $compatibilityData = json_decode($jsonData, true);
-
-        // キーを生成してデータを取得
-        $key = getSortedTypeKey($person1Type, $person2Type);
-
-        if (isset($compatibilityData[$key])) {
-            $response = $compatibilityData[$key];
-        } else {
-            // 定義されていない組み合わせの場合のデフォルトメッセージ
-            $response = $compatibilityData['default'] ?? [
-                'title' => 'この組み合わせのデータはまだありません。',
-                'summary' => '異なる性格タイプが織りなす関係は、互いに新しい発見と成長の機会をもたらします。違いを理解し、尊重することが鍵です。',
-                'strengths' => '多様な視点、お互いを刺激し合う、未知の可能性。',
-                'weaknesses' => '誤解が生じやすい、価値観の衝突、コミュニケーションのすれ違い。',
-                'tips' => 'オープンなコミュニケーションを心がけ、お互いの違いをポジティブに捉えましょう。'
-            ];
-            // デフォルトメッセージにもタイプ名を付与する
-            $response['title'] = $person1Type . 'と' . $person2Type . 'の相性: ' . $response['title'];
-        }
-    }
+    // default があることを前提に
+    $def = $data['default'];
+    $def['title'] = "{$type1} と {$type2} の相性: " . $def['title'];
+    echo json_encode($def, JSON_UNESCAPED_UNICODE);
 }
-
-echo json_encode($response, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-?>
