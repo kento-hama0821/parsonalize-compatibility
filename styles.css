@@ -624,6 +624,10 @@ body{
     margin-top: 25px;
 }
 
+.third-row {
+    margin-top: 25px;
+}
+
 .feature-card {
     flex: 1;
     min-width: 280px;
@@ -738,23 +742,23 @@ body{
 /* よくある質問セクション */
 .faq-section {
     padding: 5rem 1rem;
-    background: none; /* 背景を透明に */
+    background: none;
 }
 
 .faq-container {
     max-width: 800px;
     margin: 0 auto;
-    background: rgba(var(--c-sky), 0.5); /* 半透明のスカイブルー */
+    background: rgba(255, 255, 255, 0.9);
     padding: 2rem;
     border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .faq-item {
-    background: rgba(255, 255, 255, 0.8); /* 半透明の白 */
-    border-radius: 10px;
+    background: #fff;
+    border-radius: 8px;
     margin-bottom: 1rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .faq-question {
@@ -763,25 +767,59 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    user-select: none;
 }
 
 .faq-question h3 {
     font-size: 1.1rem;
     margin: 0;
+    color: var(--c-text);
 }
 
 .faq-toggle {
     color: var(--c-primary);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
 }
 
 .faq-answer {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+    padding: 0 1.5rem;
+}
+
+.faq-answer.active {
+    height: auto;
     padding: 0 1.5rem 1.5rem;
-    display: none; /* JavaScriptで表示切替 */
 }
 
 .faq-answer p {
     margin: 0;
     line-height: 1.7;
+    color: var(--c-text-light);
+}
+
+/* アコーディオンのホバー効果 */
+.faq-question:hover {
+    background-color: rgba(var(--c-primary), 0.05);
+}
+
+.faq-question:hover .faq-toggle {
+    transform: scale(1.1);
+}
+
+/* アクティブ状態 */
+.faq-item.active .faq-question {
+    background-color: rgba(var(--c-primary), 0.05);
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(45deg);
 }
 
 /* CTAセクション */
@@ -1046,4 +1084,375 @@ body{
     display: block;            /* inline 隙間を排除                      */
     width: 100%;               /* CSS サイズは必ずコンテナにフィット      */
     height: auto;              /* 高さは JS でピクセル座標を設定          */
+}
+
+/* === オーロラ風グラデーション背景（ゆっくり動く） ============= */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:conic-gradient(from 180deg at 50% 50%,
+    #ff9a9e 0deg,#fad0c4 90deg,#fad0c4 180deg,
+    #fcb69f 270deg,#ff9a9e 360deg);
+    animation:aurora 20s linear infinite;
+    z-index:-2;
+    filter:blur(80px) saturate(150%);
+    opacity:0.4;
+}
+@keyframes aurora{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+/* Glass‐morphism カード */
+.form-container,
+.compatibility-result,
+.feature-card,
+.testimonial-card,
+.faq-container{
+    backdrop-filter:blur(12px) saturate(140%);
+    background:rgba(255,255,255,0.75);
+}
+
+/* share ボックス */
+.share-box{
+    text-align:center;
+    margin-top:2rem;
+}
+.share-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:.4rem;
+    background:var(--c-primary);
+    color:#fff;
+    border:none;
+    border-radius:30px;
+    padding:.6rem 1.2rem;
+    margin:.3rem;
+    font-size:1rem;
+    cursor:pointer;
+    transition:.2s;
+}
+.share-btn:hover{opacity:.85}
+
+/* ラッキーカラーとあるあるガチャセクションの改善 */
+.lucky-section,
+.aruaru-section {
+    position: relative;
+    padding: 4rem 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* デコレーション要素の強化 */
+.section-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.decoration-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+}
+
+.decoration-circle:nth-child(1) {
+    width: 150px;
+    height: 150px;
+    background: var(--c-primary);
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.decoration-circle:nth-child(2) {
+    width: 100px;
+    height: 100px;
+    background: var(--c-accent);
+    top: 60%;
+    right: 10%;
+    animation-delay: 1s;
+}
+
+.decoration-circle:nth-child(3) {
+    width: 80px;
+    height: 80px;
+    background: var(--c-secondary);
+    bottom: 10%;
+    left: 15%;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* カードのリデザイン */
+.lucky-card,
+.aruaru-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 360px;
+    margin: 1rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.1),
+        0 1px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.lucky-card::before,
+.aruaru-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+}
+
+.lucky-card:hover,
+.aruaru-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.15),
+        0 1px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* セレクトボックスのスタイリング改善 */
+.lucky-card select,
+.aruaru-card select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--c-primary-light);
+    border-radius: 12px;
+    font-size: 1rem;
+    color: var(--c-text);
+    background: #fff;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FF8A65' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.lucky-card select:hover,
+.aruaru-card select:hover {
+    border-color: var(--c-primary);
+}
+
+.lucky-card select:focus,
+.aruaru-card select:focus {
+    outline: none;
+    border-color: var(--c-primary);
+    box-shadow: 0 0 0 3px rgba(255, 138, 101, 0.2);
+}
+
+/* カラースウォッチのアニメーション改善 */
+.color-swatch {
+    width: 120px;
+    height: 120px;
+    margin: 1.5rem auto;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 
+        0 10px 20px rgba(0, 0, 0, 0.1),
+        0 0 0 2px rgba(255, 255, 255, 0.5),
+        0 0 0 6px rgba(255, 138, 101, 0.2);
+    transition: all 0.3s ease;
+    animation: swatchPulse 4s ease-in-out infinite;
+}
+
+@keyframes swatchPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* あるあるガチャの結果表示改善 */
+.aruaru-result {
+    position: relative;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--c-text);
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.05),
+        0 0 0 1px rgba(255, 138, 101, 0.2);
+}
+
+.aruaru-result::before {
+    content: "✨";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 1.5rem;
+    animation: twinkle 1.5s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+    50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+    100% { transform: scale(1) rotate(360deg); opacity: 0.7; }
+}
+
+/* シェアボタンの改善 */
+.share-box {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--c-primary), var(--c-primary-dark));
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(255, 138, 101, 0.3);
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 138, 101, 0.4);
+}
+
+.share-btn:active {
+    transform: translateY(0);
+}
+
+/* レスポンシブ対応の改善 */
+@media (max-width: 768px) {
+    .lucky-section,
+    .aruaru-section {
+        padding: 3rem 1rem;
+    }
+
+    .lucky-card,
+    .aruaru-card {
+        margin: 0.5rem;
+        padding: 1.5rem;
+    }
+
+    .color-swatch {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* トリビアセクション */
+.trivia-section {
+    padding: 2rem 1rem;
+    text-align: center;
+    background: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.trivia-banner {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95),
+        rgba(253, 247, 240, 0.95));
+    border-radius: 20px;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.05),
+        inset 0 -3px 0 rgba(var(--c-primary), 0.1);
+    font-size: 1.1rem;
+    color: var(--c-text);
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    border: 1px solid rgba(255, 138, 101, 0.2);
+    animation: float-banner 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.trivia-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--c-primary-light),
+        var(--c-accent),
+        var(--c-primary-light));
+    border-radius: 20px 20px 0 0;
+    opacity: 0.7;
+}
+
+.trivia-banner:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.1),
+        0 1px 5px rgba(0, 0, 0, 0.05),
+        inset 0 -3px 0 rgba(var(--c-primary), 0.15);
+}
+
+@keyframes float-banner {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+/* トリビアの装飾要素 */
+.trivia-banner::after {
+    content: "✨";
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    font-size: 1.5rem;
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.5; transform: scale(1) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.2) rotate(15deg); }
+}
+
+/* スマートフォン向け調整 */
+@media (max-width: 600px) {
+    .trivia-banner {
+        font-size: 0.95rem;
+        padding: 1rem 1.8rem;
+        margin: 0 1rem;
+    }
 }

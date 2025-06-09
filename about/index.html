@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- ========== Meta ========== -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Parsonalize 相性診断は 16 タイプの MBTI 分析で、あなたと気になる相手の“相性ポイント”を瞬時に可視化する無料ウェブサービスです。本ページではサービスの特徴・コンセプトをご紹介します。" />
+
+    <!-- ========== Title / Favicon ========== -->
+    <title>サービスについて | Parsonalize 相性診断</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <!-- ========== Fonts & Icons ========== -->
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- ========== Global Styles ========== -->
+    <link rel="stylesheet" href="./../styles.css" />
+
+    <!-- ========== Page-Local Styles ========== -->
+    <style>
+        /* --- レイアウト & 共通テキスト --- */
+        .about-section{padding:3rem 1rem;background:var(--c-cream)}
+        .about-inner{max-width:960px;margin:0 auto;background:#fff;border-radius:1rem;padding:2.5rem 2rem;box-shadow:0 6px 20px rgb(0 0 0 / .06)}
+        .about-inner p{line-height:1.8;margin-bottom:1.6rem}
+
+        /* --- セクションヘッダー --- */
+        .about-head{margin-bottom:3rem;text-align:center}
+        .about-head__title{font-size:2.1rem;font-weight:700;color:var(--c-primary)}
+        .about-head__bar{width:80px;height:4px;margin:1rem auto 0;border-radius:2px;background:linear-gradient(to right,var(--c-primary),var(--c-secondary))}
+
+        /* --- Concept block --- */
+        .concept{margin:3.2rem 0;padding:2rem;border-radius:12px;background:var(--c-sunset)}
+        .concept h2{font-size:1.6rem;font-weight:700;margin-bottom:1.2rem;color:var(--c-primary)}
+
+        /* --- Features --- */
+        .features{display:flex;flex-wrap:wrap;gap:2rem;margin:3rem 0}
+        .feature{flex:1 1 250px;text-align:center}
+        .feature__icon{--s:80px;width:var(--s);height:var(--s);margin:0 auto 1.4rem;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:2rem;color:#fff;background:linear-gradient(135deg,var(--c-primary-light),var(--c-primary));box-shadow:0 6px 12px rgb(255 126 95 / .2)}
+        .features .feature:nth-child(2) .feature__icon{background:linear-gradient(135deg,var(--c-secondary-light),var(--c-secondary));box-shadow:0 6px 12px rgb(68 185 199 / .2)}
+        .features .feature:nth-child(3) .feature__icon{background:linear-gradient(135deg,var(--c-accent-light),var(--c-accent));box-shadow:0 6px 12px rgb(255 188 66 / .2)}
+        .feature h3{font-size:1.25rem;font-weight:600;margin-bottom:.8rem;color:var(--c-text)}
+
+        /* --- MBTI grid --- */
+        .mbti{margin:3rem 0;padding:2rem;border-radius:12px;background:var(--c-sky)}
+        .mbti h2{text-align:center;font-size:1.6rem;font-weight:700;margin-bottom:1.5rem;color:var(--c-secondary-dark)}
+        .mbti-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem}
+        .mbti-card{background:#fff;border-radius:10px;padding:1rem;text-align:center;box-shadow:0 4px 12px rgb(0 0 0 / .05);transition:.3s}
+        .mbti-card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgb(0 0 0 / .1)}
+        .mbti-card h4{font-size:1.05rem;font-weight:700;color:var(--c-primary);margin-bottom:.4rem}
+        .mbti-card p{font-size:.9rem;color:var(--c-text-light)}
+
+        /* --- CTA --- */
+        .cta{margin:3.5rem 0;padding:2.5rem;border-radius:12px;text-align:center;background:linear-gradient(135deg,var(--c-sunset),var(--c-cream));position:relative;overflow:hidden}
+        .cta::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff7e5f' fill-opacity='0.05'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");z-index:0}
+        .cta h2{font-size:1.8rem;font-weight:700;margin-bottom:1.2rem;position:relative;z-index:1;color:var(--c-text)}
+        .cta p{font-size:1.05rem;margin-bottom:2rem;position:relative;z-index:1}
+        .btn-primary{display:inline-block;padding:.9rem 2rem;border-radius:32px;background:var(--c-primary);color:#fff;font-weight:600;text-decoration:none;transition:.3s}
+        .btn-primary:hover{background:var(--c-primary-dark);transform:translateY(-3px)}
+
+        /* --- Back link --- */
+        .back{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;color:var(--c-primary);font-weight:500;text-decoration:none;transition:.25s}
+        .back:hover{color:var(--c-primary-dark);transform:translateX(-4px)}
+
+        /* --- Responsive --- */
+        @media(max-width:768px){.about-inner{padding:2rem 1.5rem}.features{flex-direction:column}}
+        @media(max-width:480px){.about-head__title{font-size:1.9rem}.mbti-grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}}
+    </style>
+</head>
+
+<body>
+<!-- ===== Header ===== -->
+<header class="site-header">
+    <h1 class="site-title">
+        <span class="line1">Parsonalize 相性診断 <i class="fas fa-heartbeat"></i></span>
+    </h1>
+</header>
+
+<!-- ===== Main ===== -->
+<main>
+    <section class="about-section animated">
+        <div class="about-inner">
+            <!-- Header -->
+            <div class="about-head">
+                <h2 class="about-head__title">サービスについて</h2>
+                <span class="about-head__bar"></span>
+            </div>
+
+            <!-- Intro -->
+            <p>
+                <strong>Parsonalize 相性診断</strong> は、16 タイプ MBTI 分析をベースに<br>
+                <em>「私（タイプA）とあの人（タイプB）の相性は？」</em> を&nbsp;5&nbsp;秒で可視化する
+                無料ウェブアプリです。星評価・レーダーチャート・強み／注意点の 3 本柱で、
+                <strong>「どう向き合えば関係が深まるのか」</strong> を直感的に理解できます。
+            </p>
+
+            <p>
+                恋人・友人・同僚・推し… 相手をもっと知りたいときにご活用ください。
+                結果はクリック一つで共有リンク化できるので、SNS やチャットで送り合うだけで盛り上がります！
+            </p>
+
+            <!-- Concept -->
+            <div class="concept">
+                <h2>サービスコンセプト</h2>
+                <p><strong>「違い」を恐れず、「違い」を楽しむ。</strong></p>
+                <p>
+                    人間関係においてすれ違いはつきもの。しかし <em>タイプの特徴</em> をあらかじめ知っていれば、
+                    行動や考え方の背景をポジティブに解釈できます。Parsonalize は
+                    <strong>“知る → 受け入れる → 活かす”</strong> の 3 ステップで、
+                    あなたのコミュニケーションをアップデートします。
+                </p>
+            </div>
+
+            <!-- Features -->
+            <div class="features">
+                <div class="feature">
+                    <div class="feature__icon"><i class="fas fa-bolt"></i></div>
+                    <h3>秒速レポート</h3>
+                    <p>2 つのタイプを選ぶだけで、星評価・平均パラメータ・解説文を即生成。</p>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon"><i class="fas fa-chart-radar"></i></div>
+                    <h3>レーダーチャート</h3>
+                    <p>論理性・感受性など 6 軸で両者のバランスをひと目で把握。</p>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon"><i class="fas fa-share-nodes"></i></div>
+                    <h3>ワンクリック共有</h3>
+                    <p>X / LINE / URL コピーに対応。診断結果をそのままシェアして盛り上がろう！</p>
+                </div>
+            </div>
+
+            <!-- MBTI grid -->
+            <div class="mbti">
+                <h2>16 タイプ早見表</h2>
+                <p>自分・相手の 4 文字コードがまだ分からない？<br>まずは “ピンとくるニックネーム” を探してみてください。</p>
+
+                <div class="mbti-grid">
+                    <div class="mbti-card"><h4>INTJ</h4><p>未来を設計する「戦略家」</p></div>
+                    <div class="mbti-card"><h4>INTP</h4><p>好奇心で世界を分解する「研究者」</p></div>
+                    <div class="mbti-card"><h4>ENTJ</h4><p>ゴールへ突き進む「指揮官」</p></div>
+                    <div class="mbti-card"><h4>ENTP</h4><p>アイデアで勝負する「発明家」</p></div>
+
+                    <div class="mbti-card"><h4>INFJ</h4><p>意味を探求する「ビジョナリー」</p></div>
+                    <div class="mbti-card"><h4>INFP</h4><p>理想を紡ぐ「詩人」</p></div>
+                    <div class="mbti-card"><h4>ENFJ</h4><p>人を導く「カリスマ教師」</p></div>
+                    <div class="mbti-card"><h4>ENFP</h4><p>ワクワクを拡散する「自由な冒険家」</p></div>
+
+                    <div class="mbti-card"><h4>ISTJ</h4><p>手順を守る「実務マスター」</p></div>
+                    <div class="mbti-card"><h4>ISFJ</h4><p>みんなを支える「心配りの達人」</p></div>
+                    <div class="mbti-card"><h4>ESTJ</h4><p>仕組みを整える「現場監督」</p></div>
+                    <div class="mbti-card"><h4>ESFJ</h4><p>調和を育む「社交リーダー」</p></div>
+
+                    <div class="mbti-card"><h4>ISTP</h4><p>	技術で解決する「職人気質」</p></div>
+                    <div class="mbti-card"><h4>ISFP</h4><p>五感で味わう「アーティスト」</p></div>
+                    <div class="mbti-card"><h4>ESTP</h4><p>	今を駆ける「行動派プレイヤー」</p></div>
+                    <div class="mbti-card"><h4>ESFP</h4><p>場を盛り上げる「エンターテイナー」</p></div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta">
+                <h2>無料で相性をチェック！</h2>
+                <p>登録不要。タイプを選ぶだけで結果がわかります。</p>
+                <a href="/chat" class="btn-primary">診断を始める <i class="fas fa-arrow-right"></i></a>
+                <a href="./../index.html" class="btn-primary" id="start-diagnosis-btn-bottom">今すぐ相性診断を受ける</a>
+                <a href="../index.html" class="btn-primary">今すぐ相性診断を受ける</a>
+            </div>
+            <!-- ===== Help box ===== -->
+            <div class="help-box">
+                <p>利用規約についてご不明な点がございましたら、お気軽にお問い合わせください。</p>
+                <a href="../contact/index.html" class="btn-primary">お問い合わせ</a>
+            </div>
+
+            <!-- Back link -->
+            <a href="./../index.html" class="back"><i class="fas fa-arrow-left"></i> トップページへ戻る</a>
+        </div>
+    </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+    <div class="footer-content">
+        <!-- col-1 -->
+        <div class="footer-section">
+            <h3 class="footer-heading">Parsonalize 相性診断</h3>
+            <p class="footer-description">
+                16タイプ性格診断から、あなたと気になる相手の “相性ポイント” を瞬時に算出します。
+            </p>
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+
+        <!-- col-3 -->
+        <div class="footer-section">
+            <h3 class="footer-heading">各種ポリシー</h3>
+            <ul class="footer-links">
+                <li><a href="../about/index.html">当サービスについて</a></li>
+                <li><a href="../privacy/index.html">プライバシーポリシー</a></li>
+                <li><a href="../terms/index.html">利用規約</a></li>
+                <li><a href="../disclaimer/index.html">免責事項</a></li>
+                <li><a href="../contact/index.html">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Parsonalize&nbsp;All Rights Reserved.</p>
+        <p class="footer-disclaimer">
+            ※当サービスは参考情報の提供を目的としており、心理的・医療的助言を行うものではありません。
+            必要に応じて専門家へご相談ください。
+        </p>
+    </div>
+</footer>
+
+<!-- ===== JS ===== -->
+<script>
+    document.addEventListener("DOMContentLoaded",()=>{
+        // simple fade-in for .animated elements
+        document.querySelectorAll(".animated").forEach(el=>el.style.opacity=1);
+    });
+</script>
+</body>
+</html>

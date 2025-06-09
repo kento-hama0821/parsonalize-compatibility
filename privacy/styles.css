@@ -1,0 +1,125 @@
+/* ==========================================================
+   Parsonalize Privacy Policy – Page-specific stylesheet
+   2025-06-01
+   ----------------------------------------------------------
+   既存のカラーパレット（--c-***）とフォントを前提に設計。
+   共通レイアウトや reset は /css/styles.css 側で管理。
+========================================================== */
+
+/* ---------- Main section ---------- */
+.policy-wrap {
+    background: var(--c-cream);
+    padding: 3rem 1rem;
+    min-height: 70vh;
+}
+
+/* ---------- Container ---------- */
+.policy-inner {
+    max-width: 850px;
+    margin: 0 auto;
+    background: var(--c-white);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    z-index: 1;
+    box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.04),
+            0 1px 3px  rgba(0, 0, 0, 0.05);
+}
+
+/* ---------- Page header ---------- */
+.policy-head        { text-align: center; margin-bottom: 3rem; }
+.policy-head h1     { font-size: clamp(1.8rem, 5vw, 2.2rem); font-weight: 700; color: var(--c-primary); }
+.policy-head__bar   {
+    width: 80px; height: 4px; margin: 0.9rem auto 0;
+    border-radius: 2px;
+    background: linear-gradient(to right, var(--c-primary), var(--c-secondary));
+}
+
+/* ---------- Generic section ---------- */
+.policy-section       { margin-bottom: 2.5rem; }
+.policy-section h2    {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+    color: var(--c-primary);
+    border-bottom: 2px solid var(--c-primary-light);
+}
+.policy-section h3    {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.6rem 0 .8rem;
+    color: var(--c-secondary-dark);
+}
+.policy-section p,
+.policy-section ul,
+.policy-section ol    { line-height: 1.75; margin-bottom: 1.1rem; color: var(--c-text); }
+
+.policy-section ul,
+.policy-section ol    { padding-left: 1.5rem; }
+.policy-section li    { margin-bottom: .5rem; }
+
+/* ---------- Contact / note boxes ---------- */
+.contact-info {
+    background: var(--c-sand);
+    border-left: 3px solid var(--c-secondary);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+}
+
+.important-note {
+    background: rgba(255, 126, 95, .1);
+    border-left: 3px solid var(--c-primary);
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+.info-note {
+    background: rgba(68, 185, 199, .1);
+    border-left: 3px solid var(--c-secondary);
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+/* ---------- Date block ---------- */
+.policy-date   {
+    text-align: right;
+    font-style: italic;
+    color: var(--c-text-light);
+    margin-top: 3rem;
+}
+.policy-date p { margin-bottom: .5rem; font-size: .9rem; }
+
+/* ---------- Back link ---------- */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    margin-top: 2rem;
+    color: var(--c-primary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform .25s, color .25s;
+    position: relative;
+    z-index: 1;
+}
+.back-btn:hover {
+    color: var(--c-primary-dark);
+    transform: translateX(-4px);
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 768px) {
+    .policy-inner   { padding: 2rem 1.5rem; }
+    .policy-section h2 { font-size: 1.4rem; }
+    .policy-section h3 { font-size: 1.2rem; }
+}
+@media (max-width: 480px) {
+    .policy-wrap    { padding: 2rem .8rem; }
+    .policy-inner   { padding: 1.3rem 1.1rem; }
+    .policy-head    { margin-bottom: 2rem; }
+    .contact-info   { padding: 1.2rem; }
+}

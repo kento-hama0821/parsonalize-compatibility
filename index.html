@@ -2,128 +2,162 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>パーソナライズ相性診断 | 2人の性格タイプから見る関係性</title>
-    <meta name="description" content="2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。">
-    <meta name="keywords" content="MBTI,相性診断,パーソナライズ,性格タイプ,関係性,無料診断,カップル,友達,家族">
 
-    <meta property="og:title" content="パーソナライズ相性診断 | 2人の性格タイプから見る関係性">
-    <meta property="og:description" content="2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。">
+    <!-- ★★★ OGP / SEO を強化（必要に応じドメインを変更してください） -->
+    <meta name="description" content="16タイプ×16タイプ＝256通りの相性を瞬時に診断！強み・課題・仲良しヒントを無料でチェック。結果はそのままSNSでシェアできます。">
+    <meta property="og:title" content="MBTI相性診断｜あなたと大切な人の関係性をチェック">
+    <meta property="og:description" content="16タイプ×16タイプ＝256通りの 相性を瞬時診断。強み・課題・仲良しヒントを表示！">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-new-domain.com/">
-    <meta property="og:image" content="https://your-new-domain.com/images/ogp-image-compatibility.jpg">
+    <meta property="og:url" content="https://your-domain.com/">
+    <meta property="og:image" content="https://your-domain.com/images/ogp.webp">
     <meta property="og:site_name" content="Parsonalize 相性診断">
-    <meta property="og:locale" content="ja_JP">
-
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="パーソナライズ相性診断 | 2人の性格タイプから見る関係性">
-    <meta name="twitter:description" content="2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。">
-    <meta name="twitter:image" content="https://your-new-domain.com/images/ogp-image-compatibility.jpg">
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Parsonalize 相性診断",
-            "url": "https://your-new-domain.com/",
-            "description": "2人のパーソナライズされた性格タイプ（MBTI）を入力して、相性を無料で診断。関係性の強みやヒントを見つけましょう。"
-        }
-    </script>
 
-    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="canonical" href="https://your-domain.com/">
+    <link rel="icon" href="/images/favicon.png">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
+    <!-- フォント & アイコン -->
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Canvas-confetti & AOS（軽量） -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
 
     <link rel="stylesheet" href="styles.css">
-
-    <link rel="canonical" href="https://your-new-domain.com/">
-    <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
 </head>
 <body>
-<header class="site-header">
-    <h1 class="site-title">
-        <span class="line1">Parsonalize 相性診断 <i class="fas fa-heartbeat fly-animation"></i></span>
-    </h1>
+<header class="site-header" data-aos="fade-down">
+    <h1 class="site-title"><span class="line1">Parsonalize 相性診断 <i class="fas fa-heartbeat fly-animation"></i></span></h1>
     <nav class="main-nav">
         <ul>
             <li><a href="#about">サービス概要</a></li>
             <li><a href="#how-it-works">利用方法</a></li>
-            <li><a href="#faq">よくある質問</a></li>
+            <li><a href="#faq">Q&A</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
-    <section class="hero animated">
-        <div class="mbti-badge">相性診断ツール</div>
-        <h2 class="catch"><span>2人の性格タイプ</span>で<br>相性を深めよう</h2>
-        <p class="hero-description">パーソナライズされた性格タイプ（MBTI）を元に、あなたと大切な人の関係性を診断し、<br>より良いコミュニケーションのためのヒントをご提案します。</p>
-        <a href="#compatibility-form-section" class="btn-primary" id="start-diagnosis-btn">相性診断を始める</a>
-        <p class="note">※ 無料で診断 → 結果表示まで最短1分！</p>
+    <!-- ---------- HERO ----------- -->
+    <section class="hero">
+        <div class="mbti-badge">相性診断へようこそ！！！</div>
+        <h2 class="catch" data-aos="zoom-in"><span>2人のタイプ</span>で相性を一瞬診断</h2>
+        <p class="hero-description" data-aos="fade-up" data-aos-delay="150">
+            16 性格タイプ（MBTI）をもとに、<br>あなたと大切な人の<strong>256 通り</strong>の相性パターンを網羅。<br>
+            強み・注意点・関係を深めるヒントをチェックしましょう。
+        </p>
+        <a href="#compatibility-form-section" class="btn-primary" id="start-diagnosis-btn" data-aos="fade-up" data-aos-delay="300">診断を始める</a>
+
     </section>
 
-    <section id="compatibility-form-section" class="compatibility-form-section animated delay-1">
-        <h2 class="section-title">2人のタイプを選択してください</h2>
-        <div class="form-container">
+    <section id="trivia-section" class="trivia-section" data-aos="fade-up">
+        <div class="trivia-banner" id="mbti-trivia">
+            💡 今日の Parsonalize トリビア：ENFP のキャッチコピーは "無限の可能性"
+        </div>
+    </section>
+
+    <!-- ---------- 診断フォーム ----------- -->
+    <section id="compatibility-form-section" class="compatibility-form-section">
+        <h2 class="section-title" data-aos="fade-up">2人のタイプを選択</h2>
+
+        <div class="form-container" data-aos="fade-up" data-aos-delay="100">
             <div class="input-group">
-                <label>診断する人1のタイプ:</label>
-                <div id="person1-type-selection" class="mbti-type-selection">
-                </div>
+                <label>あなたのタイプ</label>
+                <div id="person1-type-selection" class="mbti-type-selection"></div>
             </div>
             <div class="input-group">
-                <label>診断する人2のタイプ:</label>
-                <div id="person2-type-selection" class="mbti-type-selection">
-                </div>
+                <label>相手のタイプ</label>
+                <div id="person2-type-selection" class="mbti-type-selection"></div>
             </div>
             <button class="btn-primary" id="diagnose-button">相性を診断する</button>
         </div>
-        <div id="compatibility-result" class="compatibility-result" style="display: none;">
+
+        <!-- ---------- 結果 ----------- -->
+        <div id="compatibility-result" class="compatibility-result" style="display:none;" data-aos="fade-up">
             <h3 class="result-title">診断結果: <span id="result-types"></span></h3>
-            <p class="compatibility-rating">2人の相性は <span id="star-rating"></span></p>
+            <p class="compatibility-rating">相性 <span id="star-rating"></span></p>
+
             <div class="parameter-chart-container">
                 <canvas id="parameter-chart"></canvas>
-                <div class="parameter-labels" id="parameter-labels"></div>
+                <div id="parameter-labels" class="parameter-labels"></div>
             </div>
+
             <p id="result-text"></p>
             <div class="result-details">
-                <div class="detail-card">
-                    <h4><i class="fas fa-check-circle"></i> 関係性の強み</h4>
-                    <p id="result-strengths"></p>
-                </div>
-                <div class="detail-card">
-                    <h4><i class="fas fa-exclamation-triangle"></i> 関係性の注意点</h4>
-                    <p id="result-weaknesses"></p>
-                </div>
-                <div class="detail-card">
-                    <h4><i class="fas fa-lightbulb"></i> 関係を深めるヒント</h4>
-                    <p id="result-tips"></p>
+                <div class="detail-card"><h4><i class="fas fa-check-circle"></i> 強み</h4><p id="result-strengths"></p></div>
+                <div class="detail-card"><h4><i class="fas fa-exclamation-triangle"></i> 注意点</h4><p id="result-weaknesses"></p></div>
+                <div class="detail-card"><h4><i class="fas fa-lightbulb"></i> ヒント</h4><p id="result-tips"></p></div>
+            </div>
+
+            <!-- ★ SNSシェア -->
+            <div class="share-box">
+                <p>結果をシェアしてみんなにも診断してもらおう！</p>
+                <button class="share-btn" id="share-x"><i class="fab fa-x-twitter"></i> X</button>
+                <button class="share-btn" id="share-line"><i class="fab fa-line"></i> LINE</button>
+                <button class="share-btn" id="share-copy"><i class="fas fa-link"></i> コピー</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= Lucky Color / Daily Quote ============== -->
+    <section id="lucky-color-section" class="lucky-section" data-aos="fade-up">
+        <div class="section-decoration">
+            <div class="decoration-circle"></div>
+            <div class="decoration-circle"></div>
+            <div class="decoration-circle"></div>
+        </div>
+        <h2 class="section-title">今日のラッキーカラー ✨</h2>
+
+        <div class="lucky-card">
+            <select id="lucky-type-select" aria-label="MBTI Type">
+                <option value="">あなたのタイプを選択</option>
+                <!-- JS で 16 タイプを注入 -->
+            </select>
+
+            <div id="lucky-display" style="display:none">
+                <div id="color-swatch" class="color-swatch"></div>
+                <p class="hex-code" id="hex-code"></p>
+                <p class="lucky-quote" id="lucky-quote"></p>
+
+                <div class="share-box">
+                    <button class="share-btn" id="lucky-share"><i class="fab fa-x-twitter"></i> シェア</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="about-section animated delay-2">
-        <h2 class="section-title">サービス概要</h2>
-        <div class="section-content">
-            <div class="about-image">
-                <img src="/images/compatibility-chart.png" alt="MBTI相性チャートのイメージ" class="about-img">
-            </div>
-            <div class="about-text">
-                <h3>Parsonalize 相性診断とは？</h3>
-                <p>このサービスは、16の性格タイプ（MBTI）の理論に基づいて、2人の間の相性を診断します。</p>
-                <p>各タイプが持つ特性やコミュニケーションスタイルを理解することで、お互いの関係性の強みや、すれ違いやすいポイント、そして関係をより豊かにするための具体的なヒントを得ることができます。</p>
-                <p>友達、恋人、夫婦、家族、職場の同僚など、大切な人との関係を深めるための一助としてご活用ください。</p>
-                <div class="mbti-example">
-                    <p><strong>例：</strong></p>
-                    <p>・ENFP（広報運動家）とISTJ（管理者）→ お互いに刺激を与え合い、実用的な視点と新しいアイデアを結びつけられるが、コミュニケーション方法に工夫が必要。</p>
-                    <p>・INFJ（提唱者）とENFJ（主人公）→ 互いの感情を理解し、共感しやすい理想的な関係性を築ける。</p>
-                </div>
+    <!-- ========= タイプあるあるガチャ ============== -->
+    <section id="aruaru-section" class="aruaru-section" data-aos="fade-up">
+        <div class="section-decoration">
+            <div class="decoration-circle"></div>
+            <div class="decoration-circle"></div>
+            <div class="decoration-circle"></div>
+        </div>
+        <h2 class="section-title">タイプあるあるガチャ 🎰</h2>
+
+        <div class="aruaru-card">
+            <select id="aruaru-type-select" aria-label="MBTI Type">
+                <option value="">タイプを選択</option>
+                <!-- JS が 16 タイプを注入 -->
+            </select>
+
+            <button class="btn-primary" id="aruaru-spin">ガチャを回す</button>
+
+            <p id="aruaru-result" class="aruaru-result" style="display:none"></p>
+            <div class="share-box">
+                <button class="share-btn" id="aruaru-share" style="display:none">
+                    <i class="fab fa-x-twitter"></i> シェア
+                </button>
             </div>
         </div>
     </section>
 
+    <!-- ================== How It Works ================== -->
     <section id="how-it-works" class="how-it-works-section animated delay-3">
         <h2 class="section-title">利用方法</h2>
         <div class="steps-container">
@@ -179,12 +213,26 @@
         <div class="features second-row">
             <div class="feature-card">
                 <span class="free-badge">FREE</span>
+                <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                <h3 class="feature-title">ラッキーカラー診断</h3>
+                <p class="feature-desc">今日のあなたと相手を後押しする "ラッキーカラー" をタイプ別に提案。SNS アイコン色変更やコーデの参考に！</p>
+            </div>
+            <div class="feature-card">
+                <span class="free-badge">FREE</span>
+                <div class="feature-icon"><i class="fas fa-dice"></i></div>
+                <h3 class="feature-title">タイプ別あるあるガチャ</h3>
+                <p class="feature-desc">もうすぐ登場！ 「INFJ の朝あるある」など、タイプ特化のネタをランダム表示。会話のきっかけや SNS 投稿にも◎</p>
+            </div>
+            <div class="feature-card">
+                <span class="free-badge">FREE</span>
                 <div class="feature-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
                 <h3 class="feature-title">プライバシー配慮</h3>
                 <p class="feature-desc">入力された性格タイプは、診断以外の目的で使用されることはありません。安心してご利用ください。</p>
             </div>
+        </div>
+        <div class="features third-row">
             <div class="feature-card coming-soon-card">
                 <div class="feature-icon">
                     <i class="fas fa-comments"></i>
@@ -280,6 +328,22 @@
         </div>
     </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.faq-toggle').forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const item = toggle.closest('.faq-item');
+                    item.classList.toggle('open');
+
+                    const icon = toggle.querySelector('i');
+                    icon.classList.toggle('fa-plus');
+                    icon.classList.toggle('fa-minus');
+                });
+            });
+        });
+    </script>
+
+
     <section class="cta-section animated delay-7">
         <h2 class="catch">さあ、あなたと大切な人の<br><span>関係性を深めよう</span></h2>
         <p class="cta-description">性格タイプを理解することで、お互いの強みや違いを知り、より良い関係を築くヒントを見つけましょう。</p>
@@ -298,8 +362,7 @@
                 <span>登録不要で利用可能</span>
             </div>
         </div>
-    </section>
-</main>
+    </section></main>
 
 <footer class="footer">
     <div class="footer-content">
@@ -323,11 +386,11 @@
         <div class="footer-section">
             <h3 class="footer-heading">各種ポリシー</h3>
             <ul class="footer-links">
-                <li><a href="/about">当サイトについて</a></li>
-                <li><a href="/privacy">プライバシーポリシー</a></li>
-                <li><a href="/terms">利用規約</a></li>
-                <li><a href="/disclaimer">免責事項</a></li>
-                <li><a href="/contact">お問い合わせ</a></li>
+                <li><a href="./about/index.html">当サービスについて</a></li>
+                <li><a href="./privacy/index.html">プライバシーポリシー</a></li>
+                <li><a href="./terms/index.html">利用規約</a></li>
+                <li><a href="./disclaimer/index.html">免責事項</a></li>
+                <li><a href="./contact/index.html">お問い合わせ</a></li>
             </ul>
         </div>
     </div>
@@ -337,6 +400,8 @@
     </div>
 </footer>
 
-<script src="script.js"></script>
+
+<script src="script.js" defer></script>
+<script>document.addEventListener('DOMContentLoaded',()=>AOS.init({once:true}));</script>
 </body>
 </html>

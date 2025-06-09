@@ -21,15 +21,21 @@ if ($type1 === '' || $type2 === '') {
 $jsonFile = __DIR__ . '/compatibility_data.json';
 if (!file_exists($jsonFile)) {
     http_response_code(500);
-    echo json_encode(['error' => 'compatibility_data.json が見つかりません。']);
+    echo json_encode(['error' => 'compatibility_data.json が見つかりません。パス: ' . $jsonFile]);
     exit;
 }
 
-$json = file_get_contents($jsonFile);
+$json = @file_get_contents($jsonFile);
+if ($json === false) {
+    http_response_code(500);
+    echo json_encode(['error' => 'ファイルの読み取りに失敗しました。エラー: ' . error_get_last()['message']]);
+    exit;
+}
+
 $data = json_decode($json, true);
 if (json_last_error() !== JSON_ERROR_NONE) {
     http_response_code(500);
-    echo json_encode(['error' => 'JSON のパースに失敗しました。']);
+    echo json_encode(['error' => 'JSONのパースに失敗しました。エラー: ' . json_last_error_msg()]);
     exit;
 }
 

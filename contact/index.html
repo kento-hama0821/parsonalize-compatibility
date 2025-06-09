@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Adsense -->
+    <meta name="google-adsense-account" content="ca-pub-9394962155406799" />
+
+    <title>お問い合わせ | Parsonalize 相性診断</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <!-- fonts / icons / base css -->
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="./../styles.css" />
+
+    <!-- page‑local styles だけ上書き。共通変数 (--c-*, --f-main など) は styles.css に定義ずみ -->
+    <style>
+        .contact {
+            padding: 3rem 1rem;
+            background: var(--c-cream);
+            min-height: 70vh;
+        }
+        .contact__box {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+            background: var(--c-white);
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0 0 0 / 5%);
+        }
+        .contact__heading {
+            text-align: center;
+        }
+        .contact__heading h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--c-primary);
+            position: relative;
+        }
+        .contact__heading h1::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -0.75rem;
+            translate: -50%;
+            width: 80px;
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(to right, var(--c-primary), var(--c-secondary));
+        }
+
+        .contact__lead {
+            max-width: 700px;
+            margin: 2rem auto;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* ――― help topics ――― */
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .topic {
+            flex: 1;
+            min-width: 180px;
+            background: var(--c-sunset);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform .3s, box-shadow .3s;
+        }
+        .topic:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0 0 0 / 8%);
+        }
+        .topic i {
+            font-size: 2rem;
+            color: var(--c-primary);
+            margin-bottom: 1rem;
+        }
+        .topic h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--c-text);
+            font-weight: 600;
+        }
+        .topic p {
+            font-size: 0.9rem;
+            color: var(--c-text-light);
+        }
+
+        /* ――― form ――― */
+        .form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .form__group {
+            margin-bottom: 1.8rem;
+        }
+        .form__label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            color: var(--c-text);
+        }
+        .form__label .required {
+            color: var(--c-primary);
+            margin-left: 4px;
+        }
+        .form__control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            font-family: var(--f-main);
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            transition: border-color .3s, box-shadow .3s;
+        }
+        .form__control:focus {
+            border-color: var(--c-primary-light);
+            box-shadow: 0 0 0 3px rgb(255 126 95 / 10%);
+            outline: none;
+        }
+        textarea.form__control { min-height: 150px; resize: vertical; }
+
+        .form__check {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .form__check input { margin-right: 6px; }
+
+        .btn-wrap { text-align: center; margin-top: 2.5rem; }
+        .btn-primary[disabled] { background: #ccc; cursor: not-allowed; box-shadow: none; transform: none; }
+
+        /* ――― info box ――― */
+        .info {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--c-sky);
+            border-radius: 12px;
+        }
+        .info h3 { font-size: 1.3rem; margin-bottom: 1.2rem; color: var(--c-secondary-dark); font-weight: 600; }
+        .info ul { list-style: none; padding: 0; margin: 0; }
+        .info li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 1rem; line-height: 1.6; }
+        .info i { color: var(--c-secondary); margin-top: 4px; }
+        .info a { color: var(--c-secondary-dark); border-bottom: 1px dotted var(--c-secondary); text-decoration: none; transition: color .2s, border-bottom .2s; }
+        .info a:hover { color: var(--c-primary); border-bottom-color: var(--c-primary); }
+
+        /* ――― flash message ――― */
+        .flash {
+            display: none;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .flash--ok { background: rgb(46 213 115 /10%); border-left: 4px solid #2ed573; color: #20bf6b; }
+        .flash--ng { background: rgb(255 71 87 /10%); border-left: 4px solid #ff4757; color: #ff4757; }
+        .flash h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: .5rem; }
+
+        /* back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .7rem;
+            margin-top: 3rem;
+            color: var(--c-primary);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color .3s, transform .3s;
+        }
+        .back-link:hover { color: var(--c-primary-dark); transform: translateX(-5px); }
+
+        /* responsive */
+        @media (max-width: 768px) {
+            .contact__box { padding: 2rem 1.5rem; }
+            .contact__heading h1 { font-size: 1.8rem; }
+            .topics { flex-direction: column; gap: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .contact { padding: 2rem .8rem; }
+            .contact__box { padding: 1.5rem 1.2rem; }
+            .info { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+<!-- ── Header (共通) ──────────────────────────────── -->
+<header class="site-header">
+    <h1 class="site-title">
+        <span class="line1">Parsonalize 相性診断 <i class="fas fa-plane fly-animation"></i></span>
+    </h1>
+</header>
+
+<!-- ── Main ──────────────────────────────────────── -->
+<main>
+    <section class="contact animated contact">
+        <div class="contact__box">
+            <header class="contact__heading">
+                <h1>お問い合わせ</h1>
+            </header>
+
+            <p class="contact__lead">
+                ご質問、ご意見、サービスに関するお問い合わせなど、お気軽にご連絡ください。
+                専門スタッフが丁寧に対応いたします。
+            </p>
+
+            <!-- help topics -->
+            <div class="topics">
+                <div class="topic">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>一般的なご質問</h3>
+                    <p>サービスの使い方、機能、料金プランなどに関するお問い合わせ</p>
+                </div>
+                <div class="topic">
+                    <i class="fas fa-tools"></i>
+                    <h3>技術的な問題</h3>
+                    <p>アカウント、ログイン、システムエラーなどの技術的なサポート</p>
+                </div>
+                <div class="topic">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>ご提案・フィードバック</h3>
+                    <p>サービス向上のためのご意見、新機能のリクエストなど</p>
+                </div>
+            </div>
+
+            <!-- flash message -->
+            <div id="flash-ok" class="flash flash--ok">
+                <h3><i class="fas fa-check-circle"></i> お問い合わせを送信しました</h3>
+                <p>お問い合わせいただきありがとうございます。内容を確認次第、担当者よりご連絡いたします。</p>
+            </div>
+            <div id="flash-ng" class="flash flash--ng">
+                <h3><i class="fas fa-exclamation-circle"></i> 送信できませんでした</h3>
+                <p>お手数ですが、時間をおいて再度お試しください。</p>
+            </div>
+
+            <!-- form -->
+            <form id="contact-form" class="form" action="https://formsubmit.co/north8mouth@gmail.com" method="POST">
+                <!-- hidden extras -->
+                <input type="hidden" name="_subject" value="Parsonalize 相性診断 - お問い合わせがありました" />
+                <input type="hidden" name="_captcha" value="false" />
+                <!-- _next で同ページに戻り、クエリで submitted=true を付与 -->
+                <input type="hidden" name="_next" value="https://personal.match_travel/contact?submitted=true" />
+                <input type="text" name="_honey" style="display:none" />
+
+                <div class="form__group">
+                    <label class="form__label" for="name">お名前<span class="required">*</span></label>
+                    <input id="name" name="name" type="text" class="form__control" placeholder="山田 太郎" required />
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="email">メールアドレス<span class="required">*</span></label>
+                    <input id="email" name="email" type="email" class="form__control" placeholder="example@email.com" required />
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="type">お問い合わせ種別<span class="required">*</span></label>
+                    <select id="type" name="inquiry-type" class="form__control" required>
+                        <option value="" disabled selected>お問い合わせの種類を選択してください</option>
+                        <option value="general">一般的なご質問</option>
+                        <option value="technical">技術的な問題</option>
+                        <option value="feedback">ご提案・フィードバック</option>
+                        <option value="premium">プレミアムプランについて</option>
+                        <option value="business">業務提携のご相談</option>
+                        <option value="other">その他</option>
+                    </select>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="message">お問い合わせ内容<span class="required">*</span></label>
+                    <textarea id="message" name="message" class="form__control" rows="6" placeholder="ご質問やご意見を詳しくお聞かせください" required></textarea>
+                </div>
+
+                <div class="form__group form__check">
+                    <label>
+                        <input type="checkbox" id="privacy" name="privacy-agree" required />
+                        <a href="../privacy/index.html" target="_blank">プライバシーポリシー</a>を読み、同意します
+                    </label>
+                </div>
+
+                <div class="btn-wrap">
+                    <button id="submit-btn" class="btn-primary" type="submit">送信する</button>
+                </div>
+            </form>
+
+            <!-- other contact info -->
+            <section class="info">
+                <h3>その他のお問い合わせ方法</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> <div><strong>メールでのお問い合わせ：</strong><a href="mailto:jiandoubin@gmail.com">jiandoubin@gmail.com</a></div></li>
+                    <li><i class="fas fa-clock"></i> <div><strong>対応時間：</strong>平日 9:00〜18:00（土日祝日、年末年始を除く）</div></li>
+                    <li><i class="fas fa-info-circle"></i> <div><strong>ご注意：</strong>お問い合わせの内容によっては、回答までにお時間をいただく場合がございます。</div></li>
+                </ul>
+            </section>
+
+            <a href="./../index.html" class="back-link"><i class="fas fa-arrow-left"></i>トップページに戻る</a>
+        </div>
+    </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+    <div class="footer-content">
+        <!-- col-1 -->
+        <div class="footer-section">
+            <h3 class="footer-heading">Parsonalize 相性診断</h3>
+            <p class="footer-description">
+                16タイプ性格診断から、あなたと気になる相手の “相性ポイント” を瞬時に算出します。
+            </p>
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+
+        <!-- col-3 -->
+        <div class="footer-section">
+            <h3 class="footer-heading">各種ポリシー</h3>
+            <ul class="footer-links">
+                <li><a href="../about/index.html">当サービスについて</a></li>
+                <li><a href="../privacy/index.html">プライバシーポリシー</a></li>
+                <li><a href="../terms/index.html">利用規約</a></li>
+                <li><a href="../disclaimer/index.html">免責事項</a></li>
+                <li><a href="../contact/index.html">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Parsonalize&nbsp;All Rights Reserved.</p>
+        <p class="footer-disclaimer">
+            ※当サービスは参考情報の提供を目的としており、心理的・医療的助言を行うものではありません。
+            必要に応じて専門家へご相談ください。
+        </p>
+    </div>
+</footer>
+
+<!-- ── Script ────────────────────────────────────── -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // アニメーション要素 (fade‑in させるシンプルな実装)
+        document.querySelectorAll(".animated").forEach(el => (el.style.opacity = 1));
+
+        // ボタン z-index fix
+        document.querySelectorAll(".btn-primary, .back-link").forEach(btn => {
+            btn.style.zIndex = 1;
+            btn.style.position = "relative";
+        });
+
+        // submitted クエリチェック
+        const params = new URLSearchParams(location.search);
+        if (params.get("submitted") === "true") {
+            document.getElementById("contact-form").style.display = "none";
+            document.getElementById("flash-ok").style.display = "block";
+            history.replaceState({}, document.title, location.pathname);
+        }
+
+        // submit lock
+        const form = document.getElementById("contact-form");
+        form?.addEventListener("submit", () => {
+            const btn = document.getElementById("submit-btn");
+            btn.disabled = true;
+            btn.textContent = "送信中…";
+        });
+    });
+</script>
+</body>
+</html>
